@@ -1,140 +1,138 @@
-# لا تشيل هم | Don't Worry - Video Downloader
+# لا تشيل هم | Don't Worry 🌊
 
-<p align="center">
-  <strong>حمّل فيديوهاتك المفضلة بسهولة وسرعة</strong><br>
-  <em>Download your favorite videos easily and quickly</em>
-</p>
+> أدوات مجانية عبر الإنترنت - بدون تسجيل
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js">
-  <img src="https://img.shields.io/badge/TypeScript-5-blue?logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/React-19-blue?logo=react" alt="React">
-</p>
+![Don't Worry Logo](public/logo_new.png)
+
+## ✨ المميزات
+
+### 🎥 تحميل الفيديو
+- دعم منصات متعددة: Douyin, TikTok, YouTube, Twitter, Instagram, Bilibili, Xiaohongshu
+- تحميل بجودات مختلفة
+- دعم التحميل المتعدد
+
+### ☁️ رفع الملفات السحابي
+- 6 مزودي تخزين سحابي:
+  - 🖥️ Local Server
+  - ☁️ Cloudflare R2 (10GB مجاني)
+  - 🪣 AWS S3 (5GB مجاني)
+  - 🌐 Google Cloud Storage (5GB مجاني)
+  - 💾 Backblaze B2 (10GB مجاني)
+  - ⚡ Supabase Storage (1GB مجاني)
+- حماية بكلمة مرور
+- تحديد وقت انتهاء الصلاحية
+- خيارات متقدمة (One Shot, Removable)
+
+### 🖼️ أدوات الصور
+- ضغط الصور
+- تغيير الحجم
+- تحويل الصيغ
+
+### 📝 أدوات النصوص
+- التشفير وفك التشفير
+- ترميز Base64
+- تنسيق JSON
+- توليد Hash
+
+### 🔗 مختصر الروابط
+- إنشاء روابط قصيرة
+- تخصيص الكود
+- تتبع النقرات
+
+### 📱 مولد QR Code
+- نص، روابط، WiFi، جهات اتصال
+- تخصيص الألوان والحجم
+
+### 📄 أدوات PDF
+- دمج ملفات PDF
+- تقسيم PDF
+- ضغط PDF
+
+## 🛠️ التقنيات المستخدمة
+
+- **Frontend**: Next.js 16, React 19, TypeScript
+- **Styling**: Tailwind CSS 4, shadcn/ui
+- **Database**: Prisma ORM, SQLite
+- **Icons**: Lucide React
+- **Storage**: AWS S3 SDK (متوافق مع R2, B2, GCS)
+
+## 🚀 التثبيت
+
+```bash
+# استنساخ المشروع
+git clone https://github.com/your-username/dont-worry.git
+cd dont-worry
+
+# تثبيت المتطلبات
+bun install
+
+# إعداد قاعدة البيانات
+bun run db:push
+
+# تشغيل المشروع
+bun run dev
+```
+
+## ⚙️ إعدادات السحابة
+
+أنشئ ملف `.env` وأضف المتغيرات المطلوبة:
+
+```env
+# Cloudflare R2
+CLOUDFLARE_R2_ENDPOINT=https://xxx.r2.cloudflarestorage.com
+CLOUDFLARE_R2_ACCESS_KEY_ID=your_key
+CLOUDFLARE_R2_SECRET_ACCESS_KEY=your_secret
+CLOUDFLARE_R2_BUCKET=your_bucket
+
+# AWS S3
+AWS_ACCESS_KEY_ID=your_key
+AWS_SECRET_ACCESS_KEY=your_secret
+AWS_S3_BUCKET=your_bucket
+AWS_REGION=us-east-1
+
+# Supabase
+SUPABASE_URL=https://xxx.supabase.co
+SUPABASE_SERVICE_KEY=your_key
+```
+
+## 📁 هيكل المشروع
+
+```
+dont-worry/
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── api/             # API Routes
+│   │   ├── page.tsx         # الصفحة الرئيسية
+│   │   ├── layout.tsx       # التخطيط الرئيسي
+│   │   └── globals.css      # الأنماط العامة
+│   ├── components/          # مكونات React
+│   │   ├── ui/              # مكونات shadcn/ui
+│   │   ├── Header.tsx       # الهيدر
+│   │   ├── VideoDownloader.tsx
+│   │   ├── FileUploader.tsx
+│   │   └── ...
+│   └── lib/                 # المكتبات والأدوات
+│       ├── cloud-storage.ts # خدمة التخزين السحابي
+│       ├── translations.ts  # الترجمات
+│       └── i18n.tsx         # نظام اللغات
+├── public/                  # الملفات الثابتة
+├── prisma/                  # مخطط قاعدة البيانات
+└── package.json
+```
+
+## 🌐 اللغات المدعومة
+
+- 🇸🇦 العربية
+- 🇬🇧 English
+
+## 👨‍💻 المطورون
+
+- **التصميم**: [@binnoma](https://instagram.com/binnoma) من الإمارات 🇦🇪
+
+## 📄 الترخيص
+
+MIT License
 
 ---
 
-## Features
-
-- **Multi-Platform Support**: TikTok, Douyin, Instagram, Twitter/X, YouTube, Facebook, Bilibili, Pinterest, Reddit, and more
-- **Bilingual**: Arabic (RTL) and English interfaces
-- **Dark/Light Mode**: Automatic theme detection with manual toggle
-- **No Registration**: No account needed
-- **Multiple Quality Options**: HD, SD, and Audio-only downloads
-- **Download History**: Track your recent downloads locally
-- **Proxy Download**: Bypass CORS restrictions for direct downloads
-- **Responsive Design**: Works on all screen sizes
-
-## Supported Platforms
-
-| Platform | Status |
-|----------|--------|
-| TikTok / Douyin | ✅ (via TikWM API + yt-dlp) |
-| YouTube | ✅ (via yt-dlp) |
-| Twitter / X | ✅ (via yt-dlp) |
-| Instagram | ✅ (via yt-dlp) |
-| Facebook | ✅ (via yt-dlp) |
-| Bilibili | ✅ (via yt-dlp) |
-| Pinterest | ✅ (via yt-dlp) |
-| Reddit | ✅ (via yt-dlp) |
-| Vimeo / Twitch / Snapchat | ✅ (via yt-dlp) |
-
-## Tech Stack
-
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript
-- **Styling**: CSS Variables (Dark/Light themes)
-- **Video Processing**: yt-dlp + TikWM API
-- **i18n**: Custom AR/EN context system
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) installed and accessible
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/binnoma/dont-worry.git
-cd dont-worry
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Install yt-dlp
-
-```bash
-# Using pip
-pip install yt-dlp
-
-# Or using brew (macOS)
-brew install yt-dlp
-
-# Or using apt (Ubuntu/Debian)
-sudo apt install yt-dlp
-```
-
-> **Note**: Update the `YTDLP` path in `src/app/api/download/route.ts` and `src/app/api/resolve/route.ts` to match your yt-dlp installation path.
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── api/
-│   │   ├── download/route.ts      # Main download API (yt-dlp)
-│   │   ├── resolve/route.ts       # Video resolver API
-│   │   └── proxy-download/route.ts # Proxy download API
-│   ├── globals.css                # CSS Variables & themes
-│   ├── layout.tsx                 # Root layout
-│   └── page.tsx                   # Main page
-├── components/
-│   ├── Header.tsx                 # Header with theme/language toggles
-│   ├── VideoDownloader.tsx        # Main download component
-│   └── Footer.tsx                 # Footer with credits
-└── contexts/
-    ├── I18nContext.tsx             # Arabic/English i18n system
-    └── ThemeContext.tsx            # Dark/Light theme system
-```
-
-## API Routes
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/resolve` | POST | Resolve video URL and return metadata + download options |
-| `/api/download` | POST/GET | Download video via yt-dlp (stream) |
-| `/api/proxy-download` | POST | Proxy download to bypass CORS |
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project on [Vercel](https://vercel.com)
-3. Add environment variable for yt-dlp path if needed
-4. Deploy
-
-### Self-Hosted
-
-```bash
-npm run build
-npm start
-```
-
-## Credits
-
-Made with ❤️ from UAE
-
-Designed & Developed by [Binnoma](https://github.com/binnoma)
-
-## License
-
-MIT License
+صنع بـ ❤️ من الإمارات 🇦🇪
